@@ -9,7 +9,7 @@ class Dialog;
 
 class Dialog : public QDialog
 {
-  Q_OBJECT
+  Q_OBJECT //!OCLINT
 
 public:
   explicit Dialog(QWidget *parent = 0);
