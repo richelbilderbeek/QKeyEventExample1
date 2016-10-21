@@ -51,6 +51,7 @@ void dialog_test::key_event_1_should_have_an_effect()
   event1->setAccepted(false);
   d.keyPressEvent(event1);
   QVERIFY(event1->isAccepted());
+  delete event1;
 }
 
 void dialog_test::key_event_2_should_have_no_effect_initially()
@@ -62,6 +63,7 @@ void dialog_test::key_event_2_should_have_no_effect_initially()
   event2->setAccepted(false);
   d.keyPressEvent(event2);
   QVERIFY(!event2->isAccepted());
+  delete event2;
 }
 
 void dialog_test::key_event_2_should_have_an_effect_after_key_1()
@@ -74,6 +76,7 @@ void dialog_test::key_event_2_should_have_an_effect_after_key_1()
     event1->setAccepted(false);
     d.keyPressEvent(event1);
     assert(event1->isAccepted());
+    delete event1;
   }
   QKeyEvent * const event2
     = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_2, Qt::NoModifier)
@@ -81,6 +84,7 @@ void dialog_test::key_event_2_should_have_an_effect_after_key_1()
   event2->setAccepted(false);
   d.keyPressEvent(event2);
   QVERIFY(event2->isAccepted());
+  delete event2;
 }
 
 void dialog_test::key_event_3_should_never_have_an_effect()
@@ -92,4 +96,5 @@ void dialog_test::key_event_3_should_never_have_an_effect()
   event3->setAccepted(false);
   d.keyPressEvent(event3);
   QVERIFY(!event3->isAccepted());
+  delete event3;
 }
