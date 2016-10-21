@@ -45,56 +45,41 @@ void dialog_test::key_click_3_should_never_have_an_effect()
 void dialog_test::key_event_1_should_have_an_effect()
 {
   Dialog d;
-  QKeyEvent * const event1
-    = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_1, Qt::NoModifier)
-  ;
-  event1->setAccepted(false);
-  d.keyPressEvent(event1);
-  QVERIFY(event1->isAccepted());
-  delete event1;
+  QKeyEvent event1(QKeyEvent::KeyPress, Qt::Key_1, Qt::NoModifier);
+  event1.setAccepted(false);
+  d.keyPressEvent(&event1);
+  QVERIFY(event1.isAccepted());
 }
 
 void dialog_test::key_event_2_should_have_no_effect_initially()
 {
   Dialog d;
-  QKeyEvent * const event2
-    = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_2, Qt::NoModifier)
-  ;
-  event2->setAccepted(false);
-  d.keyPressEvent(event2);
-  QVERIFY(!event2->isAccepted());
-  delete event2;
+  QKeyEvent event2(QKeyEvent::KeyPress, Qt::Key_2, Qt::NoModifier);
+  event2.setAccepted(false);
+  d.keyPressEvent(&event2);
+  QVERIFY(!event2.isAccepted());
 }
 
 void dialog_test::key_event_2_should_have_an_effect_after_key_1()
 {
   Dialog d;
   {
-    QKeyEvent * const event1
-      = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_1, Qt::NoModifier)
-    ;
-    event1->setAccepted(false);
-    d.keyPressEvent(event1);
-    assert(event1->isAccepted());
-    delete event1;
+    QKeyEvent event1(QKeyEvent::KeyPress, Qt::Key_1, Qt::NoModifier);
+    event1.setAccepted(false);
+    d.keyPressEvent(&event1);
+    assert(event1.isAccepted());
   }
-  QKeyEvent * const event2
-    = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_2, Qt::NoModifier)
-  ;
-  event2->setAccepted(false);
-  d.keyPressEvent(event2);
-  QVERIFY(event2->isAccepted());
-  delete event2;
+  QKeyEvent event2(QKeyEvent::KeyPress, Qt::Key_2, Qt::NoModifier);
+  event2.setAccepted(false);
+  d.keyPressEvent(&event2);
+  QVERIFY(event2.isAccepted());
 }
 
 void dialog_test::key_event_3_should_never_have_an_effect()
 {
   Dialog d;
-  QKeyEvent * const event3
-    = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_3, Qt::NoModifier)
-  ;
-  event3->setAccepted(false);
-  d.keyPressEvent(event3);
-  QVERIFY(!event3->isAccepted());
-  delete event3;
+  QKeyEvent event3(QKeyEvent::KeyPress, Qt::Key_3, Qt::NoModifier);
+  event3.setAccepted(false);
+  d.keyPressEvent(&event3);
+  QVERIFY(!event3.isAccepted());
 }
