@@ -24,3 +24,9 @@ FORMS    += dialog.ui
 
 # QTest
 QT += testlib
+
+# Qt:
+# QtConcurrent::filterInternal(Sequence&, KeepFunctor, ReduceFunctor)’:
+# /usr/include/qt4/QtCore/qtconcurrentfilter.h:108:47: error: typedef ‘Iterator’ locally defined but not used [-Werror=unused-local-typedefs]
+# typedef typename Sequence::const_iterator Iterator;
+QMAKE_CXXFLAGS += -Wno-unused-local-typedefs
