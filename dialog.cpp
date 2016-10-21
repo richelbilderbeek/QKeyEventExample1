@@ -14,6 +14,11 @@ Dialog::~Dialog()
   delete ui;
 }
 
+QString Dialog::text() const noexcept
+{
+  return ui->label->text();
+}
+
 void Dialog::keyPressEvent(QKeyEvent * event)
 {
   if (ui->label->text() == "Press 1" && event->key() == Qt::Key_1)

@@ -15,6 +15,8 @@ public:
   explicit Dialog(QWidget *parent = 0);
   ~Dialog();
 
+  QString text() const noexcept;
+
 public slots:
   void keyPressEvent(QKeyEvent * event);
 
