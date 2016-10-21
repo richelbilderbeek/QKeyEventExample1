@@ -15,7 +15,7 @@ public:
   explicit Dialog(QWidget *parent = 0);
   ~Dialog();
 
-private slots:
+public slots:
   void keyPressEvent(QKeyEvent * event);
 
 private:
